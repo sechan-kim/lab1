@@ -1,0 +1,112 @@
+---
+title: "3_model_comparison_TALIS_2024"
+output: html_document
+date: "2026-10-19"
+---
+
+
+# Summary Tables
+
+```{r}
+make_icc_table <- function(l2, l1, rs, icc) {
+  df <- data.frame(
+    Model = c("1", "2", "3"),
+    `R script` = c("lmer() (lme4)",
+                   "Blozis_MELS_single_continuous_final.R",
+                   "ordinal_latent_MELS_v3x.R"),
+    `Response variable name` = c("dvmean", "dvmean",
+                                 "TT4G54A TT4G54B TT4G54C TT4G54D"),
+    `Level 2 variance`      = l2,
+    `Level 1 variance`      = l1,
+    `Random scale variance` = rs,
+    ICC                     = icc,
+    check.names = FALSE
+  )
+  knitr::kable(df, align = rep("l", 7))
+}
+```
+
+
+### Multilevel Model Summary Table: Brazil
+
+1. Data set: TALIS OECD 2024
+2. Name of construct/s that you chose to analyze: Teachers' report of classroom disruption levels
+3. Variable names of individual items that measure the construct:
+      a. TT4G54A TT4G54B TT4G54C TT4G54D
+      b. dvmean = average(TT4G54A TT4G54B TT4G54C TT4G54D)
+4. Sample size at level 2: 480
+5. Sample size at level 1: 3801
+
+
+```{r bra-table, echo=FALSE}
+make_icc_table(
+  l2  = c("0.0774", "0.0812", "0.5032"),
+  l1  = c("0.4777", "0.4682", "3.4182"),
+  rs  = c("-",      "0.0305", "0.1530"),
+  icc = c("0.1394", "0.1478", "0.1283")
+)
+```
+
+
+### Multilevel Model Summary Table: Japan
+
+1. Data set: TALIS OECD 2024
+2. Name of construct/s that you chose to analyze: Teachers' report of classroom disruption levels
+3. Variable names of individual items that measure the construct:
+      a. TT4G54A TT4G54B TT4G54C TT4G54D
+      b. dvmean = average(TT4G54A TT4G54B TT4G54C TT4G54D)
+4. Sample size at level 2: 402
+5. Sample size at level 1: 4480	
+
+```{r model-table, echo=FALSE}
+make_icc_table(
+  l2  = c("0.0270", "0.0200", "0.7983"),
+  l1  = c("0.2574", "0.2732", "5.4240"),
+  rs  = c("-",       "1.0102", "0.0603"),
+  icc = c("0.0949", "0.0683", "0.1283")
+)
+```
+
+
+### Multilevel Model Summary Table: Australia
+
+1. Data set: TALIS OECD 2024
+2. Name of construct/s that you chose to analyze: Teachers' report of classroom disruption levels
+3. Variable names of individual items that measure the construct:
+      a. TT4G54A TT4G54B TT4G54C TT4G54D
+      b. dvmean = average(TT4G54A TT4G54B TT4G54C TT4G54D)
+4. Sample size at level 2: 356
+5. Sample size at level 1: 3215	
+
+```{r model-table, echo=FALSE}
+make_icc_table(
+  l2  = c("0.0837", "0.0827", "1.2084"),
+  l1  = c("0.5490", "0.5527", "5.7707"),
+  rs  = c("-",      "0.2078", "0.0348"),
+  icc = c("0.1323", "0.1301", "0.1732")
+)
+
+```
+
+
+
+### Multilevel Model Summary Table: USA
+
+1. Data set: TALIS OECD 2024
+2. Name of construct/s that you chose to analyze: Teachers' report of classroom disruption levels
+3. Variable names of individual items that measure the construct:
+      a. TT4G54A TT4G54B TT4G54C TT4G54D
+      b. dvmean = average(TT4G54A TT4G54B TT4G54C TT4G54D)
+4. Sample size at level 2: 152
+5. Sample size at level 1: 1185	
+
+```{r model-table, echo=FALSE}
+make_icc_table(
+  c("0.0543", "0.0562", "1.1404"), 
+  c("0.5084",  "0.5050", "6.6393"),
+  c("-",       "0.2068", "0.0432"),       
+  c("0.0965", "0.1001", "0.1466")
+)
+```
+
+
